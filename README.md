@@ -65,7 +65,7 @@ The project can be divided into two core parts.
     <p>Configure ESP: First configure ESP module so that it can be used as a interface for Arduino UNO. Follow circuit diagram to build up the circuit. Then copy the script from "ESP Folder". Follow this <a href="https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html">link</a> to add required header and also for compilation</p>
   </li>
   <li> 
-    <p>Configure Arduino:Prepare circuit as described in the diagram. Copy the script from "Controller Folder". Before uploading the script to Arduino add valid network configuration to the script parameter. For better understanding read the comments beside variables like "WiFi Name", "Server IP". Here server ip is  the local ip address of computer in which the server is running.</p>
+    <p>Configure Arduino: Prepare circuit as described in the diagram. Copy the script from "Controller Folder". Before uploading the script to Arduino add valid network configuration to the script parameter. For better understanding read the comments beside variables like "WiFi Name", "Server IP". Here server ip is  the local ip address of computer in which the server is running.</p>
   </li>
   <li> 
     <p>Server: Download Intellij IDE (or any which you prefer). Provide broadcast address of the network. It should be the last address of any network.</p>
