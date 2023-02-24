@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>IOT Based Smart Highway Management System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    </style>
+
+</head>
+
+
+<body>
+<div class="center">
+    <h1>Emergency Request Interface</h1>
+</div>
+
+
+<div id="hook" style="border: limegreen 2px;">
+    <h1></h1>
+    <h1 style="font-size: 30px; text-align: left; padding: auto; color: rgb(245, 77, 77);">Current Emergency Request
+        Pending</h1>
+    <table id="main_table">
+        <tr>
+            <th class="name">ID</th>
+            <th class="name">Loaction</th>
+            <th class="name">Request Type</th>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+<style>
+  #main_table {
+    font-size: 20px;
+    border-collapse: collapse;
+    border-spacing: 20;
+    width: 100%;
+
+    /* text-align:center;
+    overflow-y :auto;
+    height:300px;
+    display:block; */
+  }
+
+  #hook {
+    text-align: center;
+    overflow-y: auto;
+    height: 300px;
+    display: block;
+    width: 100%;
+  }
+
+  #main_table tr {
+    border: 2px solid orange;
+    height: 40px;
+    font-size: 25px;
+  }
+
+  #main_table tbody tr:hover td,
+  .table tbody tr:hover th {
+    background-color: #f0ed65;
+  }
+  .center {
+    border: 5px solid;
+    display: flex;
+    justify-content: center;
+  }
+
+  .name {
+    font-size: 25px;
+    background-color: #4CAF50;
+  }
+
+</style>
+
+
+<script>
+  console.log((document.location.host).toString());
+  const server = "http://" + (document.location.host).toString() + "/update";
+
+  //console.log("Inside loop");
+  function httpGetAsync(theUrl, callback) {
+    let xmlHttpReq = new XMLHttpRequest();
+    xmlHttpReq.onreadystatechange = function () {
+      if (xmlHttpReq.readyState == 4 && xmlHttpReq.status == 200)
+        callback(xmlHttpReq.responseText);
+    }
+    xmlHttpReq.open("GET", theUrl, true); // true for asynchronous
+    xmlHttpReq.send(null);
+  }
+
+  function httpPost(server, data) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", server, true);
+    //xhr.setRequestHeader('Content-Type', 'application/json');
+    //xhr.setRequestHeader("Access-Control-Allow-Origin", '*');
+    xhr.send(data);
+
+  }
+
+
+  window.setInterval(function () {
+
+    try {
+
+
+      httpGetAsync(server, function (result) {
+
+        //console.log(result);
+        var ids = result.split(",")
+        console.log(ids.length);
+        for (let i = 0; i < ids.length; ++i) {
+          generate(ids[i]);
+        }
+
+      })
+      // httpPost(server, "OK");
+
+
+    }
+    catch (err) {
+      console.log("Caught err")
+    }
+
+
+
+
+
+  }, 2000);
+
+
+  function generate(data) {
+    try {
+      separated = data.split(";")
+      //console.log(separated)
+      if ((!document.getElementById("id" + separated[0]))) {
+        if (data.length < 2) {
+          return;
+        }
+        let table = document.getElementById("main_table");
+        let row = table.insertRow(table.length);
+        row.onclick = function () {
+          // alert(this.rowIndex + 1);
+
+          try {
+            var x = this.cells[0].innerHTML;
+            if (!isNaN(x)) {
+              httpPost(server, x + "-C");
+              this.parentNode.removeChild(this);
+            }
+          }
+          catch (err) {
+            console.log("caught err in post")
+          }
+
+        }
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = separated[0];
+        cell1.id = "id" + separated[0];
+        cell2.innerHTML = separated[1];
+        cell3.innerHTML = separated[2];
+
+      }
+      else {
+        console.log("id not found");
+      }
+    }
+    catch (err) {
+      console.log("given value is null");
+    }
+
+  }
+
+</script>
+
+
+</html>
