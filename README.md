@@ -82,6 +82,6 @@ The project can be divided into two core parts.
 # Contribution
 <ul>
    <li> Thank you for your ideas and assistance in designing the prototype,
-    <a href="https://github.com/ TowasinAlam">Towasin Alam.</a> </li>
+    <a href="https://github.com/TowasinAlam">Towasin Alam.</a> </li>
 
 </ul>
