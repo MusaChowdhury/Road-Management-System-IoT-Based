@@ -27,6 +27,8 @@ The project can be divided into two core parts.
    </li>
 </ul>
 
+<br>
+
 # Block Diagram
 <ul>
   <li>
@@ -40,6 +42,7 @@ The project can be divided into two core parts.
    </li>
 </ul>
 
+<br>
 
 # Circuit Diagram
 <ul>
@@ -54,6 +57,7 @@ The project can be divided into two core parts.
    </li>
 </ul>
 
+<br>
 
 # Steps To Build
 <ol>
@@ -71,7 +75,13 @@ The project can be divided into two core parts.
     <p>Start The System: Start the server first. After successfully starting the server start those controllers.</p>
   </li>
 
-
-  
-
 </ol>
+
+<br>
+
+# Contribution
+<ul>
+   <li> Thank you for your ideas and assistance in designing the prototype,
+    <a href="https://github.com/ TowasinAlam">Towasin Alam.</a> </li>
+
+</ul>
