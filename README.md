@@ -79,6 +79,10 @@ The project can be divided into two core parts.
 
 <br>
 
+# Note
+To run the server, add a new Run configuration and select the "Main" class as the entry point, which is inside "src/Main.java". (Assuming the IDE is IntelliJ)
+
+
 # Contribution
 <ul>
    <li> Thank you for your ideas and assistance in designing the prototype,
